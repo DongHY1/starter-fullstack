@@ -1,4 +1,4 @@
-# Turborepo starter
+# My FullStack starter
 
 This is an official starter Turborepo.
 
