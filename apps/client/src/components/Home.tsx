@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { counterAtom } from '@/store'
+
+import { trpc } from '../utils/trpc'
 export default function Home() {
   const [count, setCount] = useAtom(counterAtom)
+  const greetingQuery = trpc.greeting.useQuery()
   return (
-    <div className="h-40 w-40">
+    <div className="flex h-40 w-40 flex-col items-center justify-center">
+      <h1 className="text-bold text-3xl text-red-200">{greetingQuery.data}</h1>
       <h1 className="text-bold text-3xl">Zustand</h1>
       <Button onClick={() => setCount(count + 1)}>点我{count}次</Button>
       <Link to="/about">About</Link>
