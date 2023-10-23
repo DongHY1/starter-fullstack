@@ -6,14 +6,14 @@ import { getReportData } from '@/api'
 import { Button } from './ui/button'
 
 export default function About() {
-  const { isPending, error, data } = useQuery({
+  const { isLoading, error, data } = useQuery({
     queryKey: ['repoData'],
     queryFn: getReportData
   })
 
-  if (isPending) return <>Loading...</>
+  if (isLoading) return <>Loading...</>
 
-  if (error) return <>'An error has occurred: ' + {error.message}</>
+  if (error) return <>'An error has occurred: ' + {error}</>
 
   return (
     <div className="flex flex-col">
